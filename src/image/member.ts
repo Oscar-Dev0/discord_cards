@@ -1,4 +1,6 @@
 import { createCanvas, loadImage, registerFont, CanvasRenderingContext2D } from 'canvas';
+import  { fillTextWithTwemoji } from 'node-canvas-with-twemoji-and-discord-emoji';
+
 import { circleImage, fillRoundRect } from '../utils';
 import { join } from 'path';
 
@@ -73,7 +75,7 @@ export class MemberCard {
         this.radius = data?.radius || 15;
 
         this.fonts = data?.fonts || {
-            usernameFont: 'poppins',
+            usernameFont: 'Nirmala UI',
             titleFont: 'poppins',
             descriptionFont: 'poppins',
             memberCountFont: 'poppins',
@@ -203,7 +205,10 @@ export class MemberCard {
         registerFont(join(__dirname + "../../resources/fonts/FredokaOne-Regular.ttf"), {
             family: font,
         });
-
+        registerFont(join(__dirname + "../../resources/fonts/NotoSansSinhala-Regular.ttf"), {
+            family: "user",
+        });
+        registerFont('C:/Windows/Fonts/Nirmala.ttf', { family: 'Nirmala UI' });
         const canvas = createCanvas(1260, 620);
         const ctx = canvas.getContext('2d');
 
@@ -258,17 +263,18 @@ export class MemberCard {
         ctx.fillStyle = this.colors.title;
         ctx.font = `80px ${this.fonts.titleFont}`;
         ctx.textAlign = 'center';
-        ctx.fillText(this.title, 642, 430, 1050);
+        await fillTextWithTwemoji(ctx, this.title, 642, 430, { maxWidth: 1050 });
 
         ctx.fillStyle = this.colors.username;
         ctx.font = `45px ${this.fonts.usernameFont}`;
         ctx.textAlign = 'center';
-        ctx.fillText(this.username, 642, 490, 1050);
+        await fillTextWithTwemoji(ctx, this.username, 642, 490, { maxWidth: 1050, });
 
         ctx.fillStyle = this.colors.description;
         ctx.font = `35px ${this.fonts.descriptionFont}`;
         ctx.textAlign = 'center';
-        ctx.fillText(this.description, 642, 540, 1050);
+        await fillTextWithTwemoji(ctx, this.description, 642, 540,  { maxWidth: 1050 });
+
 
         return canvas.toBuffer();
     };
