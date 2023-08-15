@@ -1,10 +1,5 @@
-import { createCanvas, loadImage, registerFont, CanvasRenderingContext2D } from 'canvas';
-import  { fillTextWithTwemoji } from 'node-canvas-with-twemoji-and-discord-emoji';
-
+import { createCanvas, loadImage } from 'canvas';
 import { circleImage, fillRoundRect } from '../utils';
-import { join } from 'path';
-
-
 
 /**
  * Modifica una tarjeta de miembro de Discord
@@ -34,7 +29,6 @@ export class MemberCard {
     };
     private avatar: string;
     private background: string;
-    private blur: number;
     private box: boolean;
     private radius: number;
     private fonts: {
@@ -52,7 +46,7 @@ export class MemberCard {
         this.username = data?.username || 'Unknown#0000';
         this.title = data?.title || 'WELCOME';
         this.description = data?.description || 'A new user';
-        this.memberCount = data?.memberCount || '#150';
+        this.memberCount = `#${data?.memberCount || 150}`;
 
         this.colors = data?.colors || {
             title: '#ffffff',
@@ -69,7 +63,6 @@ export class MemberCard {
         this.background =
             data?.background ||
             'https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg';
-        this.blur = data?.blur || 10;
 
         this.box = data?.box ?? true;
         this.radius = data?.radius || 15;
@@ -136,12 +129,12 @@ export class MemberCard {
      * @param [color] Color del texto
      * @param [font] Fuente de letra
      */
-    setMemberCount(memberCount: string, color?: string, font?: string) {
-        if (typeof memberCount !== 'string')
+    setMemberCount(memberCount: number, color?: string, font?: string) {
+        if (typeof memberCount !== 'number')
             throw new Error(
-                `El número de miembros /*memberCount/* no está ingresado en tipo string, en su lugar se ingresó: ${typeof memberCount}`
+                `El número de miembros /*memberCount/* no está ingresado en tipo number, en su lugar se ingresó: ${typeof memberCount}`
             );
-        this.memberCount = memberCount;
+        this.memberCount = `#${memberCount}`;
         if (color) this.colors.memberCount = color;
         if (font) this.fonts.memberCountFont = font;
         return this;
@@ -149,20 +142,14 @@ export class MemberCard {
 
     /**
  * @param background url de la imagen de fondo
- * @param [blur] cambia el desenfocado de la imágen de fondo
  * @param [radius] cambia el radio de la imágen de fondo
  */
-    setBackground(background: string, blur?: number, radius?: number) {
+    setBackground(background: string, radius?: number) {
         if (typeof background !== 'string')
             throw new Error(
                 `El background no está ingresado en tipo string, en su lugar se ingresó: ${typeof background}`
             );
         this.background = background;
-        if (typeof blur !== 'number')
-            throw new Error(
-                `El blur no está ingresado en tipo number, en su lugar se ingresó: ${typeof blur}`
-            );
-        if (blur) this.blur = blur;
         if (typeof radius !== 'number')
             throw new Error(
                 `El radius no está ingresado en tipo number, en su lugar se ingresó: ${typeof radius}`
@@ -201,14 +188,6 @@ export class MemberCard {
 
     /** Construye la tarjeta de niveles */
     async render(): Promise<Buffer> {
-        var font = 'poppins';
-        registerFont(join(__dirname + "../../resources/fonts/FredokaOne-Regular.ttf"), {
-            family: font,
-        });
-        registerFont(join(__dirname + "../../resources/fonts/NotoSansSinhala-Regular.ttf"), {
-            family: "user",
-        });
-        registerFont('C:/Windows/Fonts/Nirmala.ttf', { family: 'Nirmala UI' });
         const canvas = createCanvas(1260, 620);
         const ctx = canvas.getContext('2d');
 
@@ -216,7 +195,11 @@ export class MemberCard {
         const Fondo = await loadImage(this.background);
         fillRoundRect(ctx, 0, 0, canvas.width, canvas.height, this.radius);
         ctx.clip();
-        ctx.drawImage(Fondo, -10, -50, 1280, 720);
+        try {
+            ctx.drawImage(Fondo, -10, -50, 1280, 720);
+        } catch {
+            ctx.drawImage(await loadImage("https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg"), -10, -50, 1280, 720)
+        };
         ctx.restore();
 
         if (this.box) {
@@ -252,7 +235,11 @@ export class MemberCard {
         circleImage(ctx, 520, 110, 220, 220);
         ctx.clip();
         const Avatar = await loadImage(this.avatar);
-        ctx.drawImage(Avatar, 520, 110, 220, 220);
+        try {
+            ctx.drawImage(Avatar, 520, 110, 220, 220);
+        } catch {
+            ctx.drawImage(await loadImage("https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg"), 520, 110, 220, 220);
+        };
         ctx.restore();
 
         ctx.shadowColor = '#0a0a0a';
@@ -263,17 +250,17 @@ export class MemberCard {
         ctx.fillStyle = this.colors.title;
         ctx.font = `80px ${this.fonts.titleFont}`;
         ctx.textAlign = 'center';
-        await fillTextWithTwemoji(ctx, this.title, 642, 430, { maxWidth: 1050 });
+        ctx.fillText(this.title, 642, 430, 1050);
 
         ctx.fillStyle = this.colors.username;
         ctx.font = `45px ${this.fonts.usernameFont}`;
         ctx.textAlign = 'center';
-        await fillTextWithTwemoji(ctx, this.username, 642, 490, { maxWidth: 1050, });
+        ctx.fillText(this.username, 642, 490, 1050);
 
         ctx.fillStyle = this.colors.description;
         ctx.font = `35px ${this.fonts.descriptionFont}`;
         ctx.textAlign = 'center';
-        await fillTextWithTwemoji(ctx, this.description, 642, 540,  { maxWidth: 1050 });
+        ctx.fillText(this.description, 642, 540, 1050);
 
 
         return canvas.toBuffer();
@@ -284,7 +271,7 @@ interface CardMemberData {
     username?: string;
     title?: string;
     description?: string;
-    memberCount?: string;
+    memberCount?: number;
     colors?: {
         title: string;
         description: string;
@@ -295,7 +282,6 @@ interface CardMemberData {
     };
     avatar?: string;
     background?: string;
-    blur?: number;
     radius?: number;
     box?: boolean;
     fonts?: {

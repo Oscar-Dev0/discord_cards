@@ -1,12 +1,11 @@
 import { createCanvas, loadImage, registerFont, CanvasRenderingContext2D } from 'canvas';
 import { abbreviateNumber, fillRoundRect } from '../utils';
-import { join } from 'path';
 
 
 interface RankingData {
     fonts?: { username: string, xp: string, level: string, ranks: string };
     colors?: { box: string, username: string, xp: string, level: string, firstRank: string, secondRank: string, thirdRank: string };
-    usersData?: {avatar: string, tag: string, level: number, xp: number, max_xp: number, top: number}[]
+    usersData?: { avatar: string, tag: string, level: number, xp: number, max_xp: number, top: number }[]
 };
 
 /**
@@ -24,7 +23,7 @@ interface RankingData {
 export class Ranking {
     private colors: { box: string, username: string, xp: string, level: string, firstRank: string, secondRank: string, thirdRank: string };
     private fonts: { username: string, xp: string, level: string, ranks: string };
-    public usersData: {avatar: string, tag: string, level: number, xp: number, max_xp: number, top: number}[];
+    public usersData: { avatar: string, tag: string, level: number, xp: number, max_xp: number, top: number }[];
 
     /**
      * Los datos se pueden ingresar si lo deseas en forma de [object]
@@ -33,7 +32,7 @@ export class Ranking {
     constructor(data?: RankingData) {
         this.colors = data?.colors || { box: '#212121', username: '#ffffff', xp: '#ffffff', level: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' };
         this.fonts = data?.fonts || { username: 'fredoka', xp: 'fredoka', level: 'fredoka', ranks: 'fredoka' };
-        this.usersData = data?.usersData || [{ top: 1, avatar:"https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'firstUser#0001', xp: 100, max_xp: 110, level: 1 }, { top: 2, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'secondUser#0002', xp: 90, max_xp: 110, level: 1 }, { top: 3, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'thirdUser#0003', xp: 80, max_xp: 110, level: 1 }];
+        this.usersData = data?.usersData || [{ top: 1, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'firstUser#0001', xp: 100, max_xp: 110, level: 1 }, { top: 2, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'secondUser#0002', xp: 90, max_xp: 110, level: 1 }, { top: 3, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'thirdUser#0003', xp: 80, max_xp: 110, level: 1 }];
     };
 
     /**
@@ -68,7 +67,6 @@ export class Ranking {
 
     public async render(): Promise<Buffer> {
         var font = "fredoka";
-        registerFont(join(__dirname + "../../resources/fonts/FredokaOne-Regular.ttf"), { family: font });
 
         const canvas = createCanvas(680, 745);
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;

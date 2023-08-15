@@ -1,5 +1,4 @@
-import { createCanvas, loadImage, registerFont, Canvas, Image } from 'canvas';
-
+import { createCanvas, loadImage, registerFont } from 'canvas';
 import { abbreviateNumber, fillRoundRect } from '../utils';
 import { join } from 'path';
 
@@ -64,7 +63,6 @@ export class Level {
     private colors: ColorsData;
     private images: ImagesData;
     private fonts: FontsData;
-    private blur: number;
     private radius: number;
     private levelText: string;
     private rankText: string;
@@ -96,7 +94,6 @@ export class Level {
             levelFont: "fredoka",
             xpFont: "fredoka"
         };
-        this.blur = data?.blur || 4;
         this.radius = data?.radius || 25;
 
         this.levelText = "Level {level}";
@@ -111,7 +108,7 @@ export class Level {
     * @param font Datos de la fuente de letra
     */
     private registerFonts(font?: { path: string; options: { family: string; weight?: string; style?: string } }[]): this {
-        if ( font && font?.length > 0) {
+        if (font && font?.length > 0) {
             font.forEach((f) => {
                 registerFont(f.path, f.options);
             });
@@ -223,14 +220,11 @@ export class Level {
 
     /**
      * @param background url de la imagen de fondo
-     * @param [blur] cambia el desenfocado de la imágen de fondo
      * @param [radius] cambia la intensidad del curveado de la imágen de fondo
      */
-    public setBackground(background: string, blur?: number, radius?: number): this {
+    public setBackground(background: string, radius?: number): this {
         if (typeof background !== "string") throw new Error(`El background no está ingresado en tipo string, en su lugar se ingresó: ${typeof background}`);
         this.images.background = background;
-        if (typeof blur !== "number") throw new Error(`El blur no está ingresado en tipo number, en su lugar se ingresó: ${typeof blur}`);
-        if (blur) this.blur = blur;
         if (typeof radius !== "number") throw new Error(`El radius no está ingresado en tipo number, en su lugar se ingresó: ${typeof radius}`);
         if (radius) this.radius = radius;
         return this;
@@ -238,8 +232,6 @@ export class Level {
 
     /** Construye la tarjeta de niveles */
     public async render(): Promise<Buffer> {
-        var font = "fredoka";
-        registerFont(join(__dirname + "../../resources/fonts/FredokaOne-Regular.ttf"), { family: font });
         const canvas = createCanvas(1020, 320);
         const ctx = canvas.getContext("2d");
 
@@ -247,7 +239,12 @@ export class Level {
         const Fondo = await loadImage(this.images.background);
         fillRoundRect(ctx, 0, 0, canvas.width, canvas.height, this.radius, true);
         ctx.clip();
-        ctx.drawImage(Fondo, -30, -120, 1085, 555);
+        try {
+            ctx.drawImage(Fondo, -30, -120, 1085, 555);
+        } catch {
+            ctx.drawImage(await loadImage("https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg"), -30, -120, 1085, 555)
+        };
+
         ctx.restore();
 
         ctx.save();
@@ -261,7 +258,11 @@ export class Level {
         ctx.shadowOffsetY = 8;
         ctx.shadowOffsetX = -6;
         ctx.clip();
-        ctx.drawImage(Avatar, 35, 25, 200, 200);
+        try {
+            ctx.drawImage(Avatar, 35, 25, 200, 200);
+        } catch {
+            ctx.drawImage(await loadImage("https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg"), 35, 25, 200, 200);
+        };
         ctx.restore();
 
         ctx.save();

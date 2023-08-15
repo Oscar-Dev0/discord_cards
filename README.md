@@ -1,4 +1,4 @@
-# DISCORDCARDS ⭐
+# hennus-card <img src="https://cdn.discordapp.com/attachments/1123979210151698513/1123979701589901382/logohennus-512.png" alt="Texto alternativo" width="55" height="45">
 Una librería de imágenes manipualadas con canvas para tus aplicaciones de discord.
 # INSTALACIÓN 📁
 ```sh
