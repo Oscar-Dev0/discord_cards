@@ -88,11 +88,11 @@ export class Level {
             background: "https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg"
         };
         this.fonts = data?.fonts || {
-            usernameFont: "fredoka",
-            nicknameFont: "fredoka",
-            rankFont: "fredoka",
-            levelFont: "fredoka",
-            xpFont: "fredoka"
+            usernameFont: "Nirmala UI",
+            nicknameFont: "Nirmala UI",
+            rankFont: "Fredoka Bold",
+            levelFont: "Fredoka Bold",
+            xpFont: "Fredoka Bold"
         };
         this.radius = data?.radius || 25;
 
@@ -296,30 +296,30 @@ export class Level {
         ctx.shadowOffsetX = -6;
         ctx.shadowBlur = 8;
 
-        ctx.font = "50px " + this.fonts.usernameFont;
+        ctx.font = `50px "${this.fonts.usernameFont}"`;
         ctx.fillStyle = this.colors.username;
         ctx.textAlign = "left";
         ctx.fillText(this.username, 265, 70, 570);
 
-        ctx.font = "30px " + this.fonts.nicknameFont;
+        ctx.font = `30px "${this.fonts.nicknameFont}"`;
         ctx.fillStyle = this.colors.nickname;
         ctx.textAlign = "left";
         ctx.fillText(this.nickname, 265, 110, 270);
 
-        ctx.font = "55px " + this.fonts.levelFont;
+        ctx.font = `55px "${this.fonts.levelFont}"`;
         ctx.fillStyle = this.colors.level;
         ctx.textAlign = "left";
         ctx.fillText(levelText
             .replace(/{level}/g, String(this.level))
             .toUpperCase(), 270, 230, 385);
 
-        ctx.font = "40px " + this.fonts.rankFont;
+        ctx.font = `40px "${this.fonts.rankFont}"`;
         ctx.fillStyle = this.colors.rank;
         ctx.textAlign = "right";
         ctx.fillText(rankText
             .replace(/{rank}/g, String(this.rank)), 965, 65, 570);
 
-        ctx.font = "35px " + this.fonts.xpFont;
+        ctx.font = `35px "${this.fonts.xpFont}"`;
         ctx.fillStyle = this.colors.xp;
         ctx.textAlign = "right";
         ctx.fillText(xpText

@@ -69,9 +69,9 @@ export class MemberCard {
 
         this.fonts = data?.fonts || {
             usernameFont: 'Nirmala UI',
-            titleFont: 'poppins',
-            descriptionFont: 'poppins',
-            memberCountFont: 'poppins',
+            titleFont: 'Poppins Bold',
+            descriptionFont: 'Poppins Bold',
+            memberCountFont: 'Poppins Bold',
         };
     };
 
@@ -209,7 +209,7 @@ export class MemberCard {
             fillRoundRect(ctx, 63, 50, 1134, 520, 10, true);
             ctx.globalAlpha = 1;
             ctx.fillStyle = this.colors.memberCount;
-            ctx.font = `45px ${this.fonts.memberCountFont}`;
+            ctx.font = `45px "${this.fonts.memberCountFont}"`;
             ctx.textAlign = 'right';
             ctx.fillText(this.memberCount, 1150, 120, 430);
             ctx.restore();
@@ -220,7 +220,7 @@ export class MemberCard {
             ctx.shadowOffsetX = -6;
             ctx.shadowBlur = 8;
             ctx.fillStyle = this.colors.memberCount;
-            ctx.font = `45px ${this.fonts.memberCountFont}`;
+            ctx.font = `45px "${this.fonts.memberCountFont}"`;
             ctx.textAlign = 'right';
             ctx.fillText(this.memberCount, 1200, 80, 430);
             ctx.restore();
@@ -248,17 +248,17 @@ export class MemberCard {
         ctx.shadowBlur = 8;
 
         ctx.fillStyle = this.colors.title;
-        ctx.font = `80px ${this.fonts.titleFont}`;
+        ctx.font = `80px "${this.fonts.titleFont}"`;
         ctx.textAlign = 'center';
         ctx.fillText(this.title, 642, 430, 1050);
 
         ctx.fillStyle = this.colors.username;
-        ctx.font = `45px ${this.fonts.usernameFont}`;
+        ctx.font = `45px "${this.fonts.usernameFont}"`;
         ctx.textAlign = 'center';
         ctx.fillText(this.username, 642, 490, 1050);
 
         ctx.fillStyle = this.colors.description;
-        ctx.font = `35px ${this.fonts.descriptionFont}`;
+        ctx.font = `35px "${this.fonts.descriptionFont}"`;
         ctx.textAlign = 'center';
         ctx.fillText(this.description, 642, 540, 1050);
 

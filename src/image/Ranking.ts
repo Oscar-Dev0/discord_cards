@@ -31,7 +31,7 @@ export class Ranking {
      */
     constructor(data?: RankingData) {
         this.colors = data?.colors || { box: '#212121', username: '#ffffff', xp: '#ffffff', level: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' };
-        this.fonts = data?.fonts || { username: 'fredoka', xp: 'fredoka', level: 'fredoka', ranks: 'fredoka' };
+        this.fonts = data?.fonts || { username: 'Nirmala UI', xp: 'Fredoka Bold', level: 'Fredoka Bold', ranks: 'Fredoka Bold' };
         this.usersData = data?.usersData || [{ top: 1, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'firstUser#0001', xp: 100, max_xp: 110, level: 1 }, { top: 2, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'secondUser#0002', xp: 90, max_xp: 110, level: 1 }, { top: 3, avatar: "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg", tag: 'thirdUser#0003', xp: 80, max_xp: 110, level: 1 }];
     };
 
@@ -82,24 +82,29 @@ export class Ranking {
 
                 const avatar = await loadImage(this.usersData[i].avatar);
                 ctx.clip();
-                ctx.drawImage(avatar, 0, Avatar_Y, 70, 70);
+                try{
+                    ctx.drawImage(avatar, 0, Avatar_Y, 70, 70);
+                } catch {
+                    ctx.drawImage(await loadImage("https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg"), 0, Avatar_Y, 70, 70);
+                }
+                
                 ctx.shadowBlur = 10;
                 ctx.shadowOffsetX = 8;
                 ctx.shadowOffsetY = 6;
                 ctx.shadowColor = "#0a0a0a";
 
                 ctx.fillStyle = this.colors.username;
-                ctx.font = "25px " + this.fonts.username;
+                ctx.font = `25px "${this.fonts.username}"`;
                 ctx.textAlign = 'left';
                 ctx.fillText(this.usersData[i].tag, 80, Tag_Y, 260);
 
                 ctx.fillStyle = this.colors.xp;
-                ctx.font = "20px " + this.fonts.xp;
+                ctx.font = `20px "${this.fonts.xp}"`;
                 ctx.textAlign = 'right';
                 ctx.fillText(`XP: ${abbreviateNumber(this.usersData[i].xp)} / ${abbreviateNumber(this.usersData[i].max_xp)}`, 560, XP_Y, 200);
 
                 ctx.fillStyle = this.colors.level;
-                ctx.font = "20px " + this.fonts.level;
+                ctx.font = `20px "${this.fonts.level}"`;
                 ctx.textAlign = 'right';
                 ctx.fillText("Nivel: " + this.usersData[i].level, 560, Level_Y, 200);
 
@@ -111,7 +116,7 @@ export class Ranking {
                     ctx.fillStyle = this.colors.thirdRank;
                 }
 
-                ctx.font = "30px " + this.fonts.ranks;
+                ctx.font = `30px "${this.fonts.ranks}"`;
                 ctx.textAlign = 'right';
                 ctx.fillText("#" + this.usersData[i].top, 660, Rank_Y, 75);
 
@@ -124,7 +129,7 @@ export class Ranking {
                 ctx.restore();
             }
         } else {
-            ctx.font = "40px " + font;
+            ctx.font = `40px "${font}"`;
             ctx.fillStyle = '#ffffff';
             ctx.textAlign = 'center';
             ctx.shadowBlur = 10;
