@@ -1,6 +1,6 @@
 {
   "name": "hennus-card",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
   "types": "app/index.d.ts",
