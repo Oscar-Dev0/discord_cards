@@ -122,7 +122,7 @@ npm i hennus-card
 
 `returns: Promise<Buffer>`
 
-![LevelCardImage](https://media.discordapp.net/attachments/950886048198705222/1001163315101311027/Image.png)
+![LevelCardImage](https://cdn.discordapp.com/attachments/1134193112764403836/1145604844510515250/image.png)
 
 # *`CLASS`* **MemberCard:**
 .registerFonts(font)
@@ -214,7 +214,7 @@ npm i hennus-card
 
 `returns: Promise<Buffer>`
 
-![MemberCardImage](https://media.discordapp.net/attachments/950886048198705222/1001161160646738001/Image.png)
+![MemberCardImage](https://cdn.discordapp.com/attachments/1134193112764403836/1145605307146448947/image.png)
 
 
 # *`CLASS`* **Ranking:**
@@ -280,7 +280,6 @@ npm i hennus-card
  }
  avatar?: string,
  background?: string,
- blur?: number,
  radius?: number,
  box?: boolean,
  fonts?: {
@@ -317,7 +316,6 @@ npm i hennus-card
   levelFont: string,
   xpFont: string
  },
- blur?: number,
  radius?: number,
  levelText?: string,
  rankText?: string,
