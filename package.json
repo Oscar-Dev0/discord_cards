@@ -1,13 +1,13 @@
 {
   "name": "hennus-card",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
   "types": "app/index.d.ts",
   "scripts": {
     "test": "node test",
     "build#test": "tsup",
-    "build#Npm": "tsup && npm publish"
+    "build#Npm": "tsup && yarn publish"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "canvas": "^2.11.2"
+    "canvas": "latest"
   },
   "keywords": [
     "canvas",
@@ -31,9 +31,12 @@
     "cards",
     "bot discord"
   ],
+  "engines": {
+    "node": ">=6"
+  },
   "devDependencies": {
-    "@types/node": "^20.4.10",
-    "tsup": "^7.1.0",
-    "typescript": "^5.1.6"
+    "@types/node": "latest",
+    "tsup": "latest",
+    "typescript": "latest"
   }
 }
