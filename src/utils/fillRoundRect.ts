@@ -1,4 +1,4 @@
-import { CanvasRenderingContext2D } from 'canvas';
+import { CanvasRenderingContext2D } from "canvas";
 
 export const fillRoundRect = (
   ctx: CanvasRenderingContext2D,
@@ -6,14 +6,14 @@ export const fillRoundRect = (
   y: number,
   w: number,
   h: number,
-  r: number | { tl: number, tr: number, br: number, bl: number },
+  r: number | { tl: number; tr: number; br: number; bl: number },
   f?: boolean,
-  s?: boolean
+  s?: boolean,
 ): void => {
   if (typeof r === "number") r = { tl: r, tr: r, br: r, bl: r };
   else {
     var defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
-    for (var va  in defaultRadius) {
+    for (var va in defaultRadius) {
       const side: "tl" | "tr" | "br" | "bl" = va as any;
       r[side] = r[side] || defaultRadius[side];
     }

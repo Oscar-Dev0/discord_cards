@@ -6,13 +6,14 @@
   "types": "app/index.d.ts",
   "scripts": {
     "test": "node test",
-    "build#test": "tsup",
-    "build#Npm": "tsup && yarn publish"
+    "prepare": "tsup",
+    "build#Npm": "tsup && yarn publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Oscar-Dev0/hennus-Card"
+    "url": "git+https://github.com/Oscar-Dev0/hennus-Card.git"
   },
+  "repository.url": "git+https://github.com/Oscar-Dev0/hennus-Card.git",
   "author": "Alfr3XD",
   "contributors": [
     {
@@ -31,8 +32,13 @@
     "cards",
     "bot discord"
   ],
+  "private": false,
   "engines": {
-    "node": ">=6"
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@types/node": "latest",

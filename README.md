@@ -1,268 +1,254 @@
 # hennus-card <img src="https://cdn.discordapp.com/attachments/1123979210151698513/1123979701589901382/logohennus-512.png" alt="Texto alternativo" width="55" height="45">
-Una librería de imágenes manipualadas con canvas para tus aplicaciones de discord.
+
+Una librería de imágenes manipualadas con canvas para tus aplicaciones de
+discord.
+
 # INSTALACIÓN 📁
+
 ```sh
 npm i hennus-card
 ```
+
 [![NPM](https://nodei.co/npm/hennus-card.png)](https://nodei.co/npm/hennus-card/)
 
 ## DOCUMENTACIÓN 📄
-| Clases | Constructor |
-|--|--|
+
+| Clases     | Constructor      |
+| ---------- | ---------------- |
 | MemberCard | `CardMemberData` |
-| LevelCard | `CardLevelData` |
-| Ranking | `RankingData` |
+| LevelCard  | `CardLevelData`  |
+| Ranking    | `RankingData`    |
 
+| Funciones        | Parámetros                                                                                                                                                                 |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fillRoundRect    | `ctx: CanvasRenderingContext2D` `x: number` `y: number` `w: number` `h: number` `r: number - {tl: number, tr: number, br: number, bl: number}` `f?: boolean` `s?: boolean` |
+| abbreviateNumber | `value: number`                                                                                                                                                            |
+| circleImage      | `ctx: CanvasRenderingContext2D` `x: number` `y: number` `w: number` `h: number` `f?: boolean` `s?: boolean`                                                                |
 
+`Pronto habrán más módulos para tus aplicaciones`
 
-| Funciones | Parámetros|
-|--|--|
-| fillRoundRect | `ctx: CanvasRenderingContext2D` `x: number` `y: number` `w: number` `h: number` `r: number - {tl: number, tr: number, br: number, bl: number}` `f?: boolean` `s?: boolean`
-| abbreviateNumber | `value: number` |
-| circleImage | `ctx: CanvasRenderingContext2D` `x: number` `y: number` `w: number` `h: number` `f?: boolean` `s?: boolean` |
+# _`CLASS`_ **LevelCard:**
 
-
-` Pronto habrán más módulos para tus aplicaciones`
-
-# *`CLASS`* **LevelCard:**
 .registerFonts(font)
- 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| font | array |   | Datos de la fuente de letra |
 
+| parámetro | type  | opcional | descripción                 |
+| --------- | ----- | -------- | --------------------------- |
+| font      | array |          | Datos de la fuente de letra |
 
 `returns: LevelCard`
 
 .setUsername(username, color, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| username | string |  | El nombre del usuario |
-| color | string | ✓ | El color de texto |
-| font | string | ✓ | La fuente de letra |
+| parámetro | type   | opcional | descripción           |
+| --------- | ------ | -------- | --------------------- |
+| username  | string |          | El nombre del usuario |
+| color     | string | ✓        | El color de texto     |
+| font      | string | ✓        | La fuente de letra    |
 
 `returns: LevelCard`
 
 .setNickname(nickname, color, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| nickname | string |  | El nickname del usuario |
-| color | string | ✓ | El color de texto |
-| font | string | ✓ | La fuente de letra |
+| parámetro | type   | opcional | descripción             |
+| --------- | ------ | -------- | ----------------------- |
+| nickname  | string |          | El nickname del usuario |
+| color     | string | ✓        | El color de texto       |
+| font      | string | ✓        | La fuente de letra      |
 
 `returns: LevelCard`
 
 .setRank(rank, color, text, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| rank | number |  | El top del ranking del usuario |
-| color | string | ✓ | El color de texto |
-| text | string | ✓ | El texto del ranking: `{rank}` `(alias in text)` |
-| font | string | ✓ | La fuente de letra |
+| parámetro | type   | opcional | descripción                                      |
+| --------- | ------ | -------- | ------------------------------------------------ |
+| rank      | number |          | El top del ranking del usuario                   |
+| color     | string | ✓        | El color de texto                                |
+| text      | string | ✓        | El texto del ranking: `{rank}` `(alias in text)` |
+| font      | string | ✓        | La fuente de letra                               |
 
 `returns: LevelCard`
 
 .setLevel(level, color, text, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| level | number |  | Nivel del usuario |
-| color | string | ✓ | El color de texto |
-| text | string | ✓ | El texto del  nivel: `{level}` `(alias in text)` |
-| font | string | ✓ | La fuente de letra |
+| parámetro | type   | opcional | descripción                                     |
+| --------- | ------ | -------- | ----------------------------------------------- |
+| level     | number |          | Nivel del usuario                               |
+| color     | string | ✓        | El color de texto                               |
+| text      | string | ✓        | El texto del nivel: `{level}` `(alias in text)` |
+| font      | string | ✓        | La fuente de letra                              |
 
 `returns: LevelCard`
 
 .setXp(xp, max, color, text, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| xp | number |  | Experiencia actual |
-| max | number |  | Experiencia máxima |
-| color | string | ✓ | El color de texto |
-| text | string | ✓ | El texto de la xp: `{current}` `{max}` `(alias in text)` |
-| font | string | ✓ | La fuente de letra |
+| parámetro | type   | opcional | descripción                                              |
+| --------- | ------ | -------- | -------------------------------------------------------- |
+| xp        | number |          | Experiencia actual                                       |
+| max       | number |          | Experiencia máxima                                       |
+| color     | string | ✓        | El color de texto                                        |
+| text      | string | ✓        | El texto de la xp: `{current}` `{max}` `(alias in text)` |
+| font      | string | ✓        | La fuente de letra                                       |
 
 `returns: LevelCard`
 
 .setCurrentBarColor(color)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| color | string o {hex: string, position: number}[] |  | El color de la barra de experiencia |
+| parámetro | type                                       | opcional | descripción                         |
+| --------- | ------------------------------------------ | -------- | ----------------------------------- |
+| color     | string o {hex: string, position: number}[] |          | El color de la barra de experiencia |
 
 `returns: LevelCard`
 
 .setBackground(background, blur, radius)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| background | string |  | URL de la imágen de fondo |
-| blur | number | ✓ | El difuminado del fondo |
-| radius | string | ✓  | La intensidad del borde de la tarjeta |
-
+| parámetro  | type   | opcional | descripción                           |
+| ---------- | ------ | -------- | ------------------------------------- |
+| background | string |          | URL de la imágen de fondo             |
+| blur       | number | ✓        | El difuminado del fondo               |
+| radius     | string | ✓        | La intensidad del borde de la tarjeta |
 
 `returns: LevelCard`
 
 .setAvatar(avatar, color)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| avatar | string |  | URL del avatar del usuario |
-| color | string | ✓ | Color del aro del usuario |
-
+| parámetro | type   | opcional | descripción                |
+| --------- | ------ | -------- | -------------------------- |
+| avatar    | string |          | URL del avatar del usuario |
+| color     | string | ✓        | Color del aro del usuario  |
 
 `returns: LevelCard`
 
 .render()
-
 
 `returns: Promise<Buffer>`
 
 ![LevelCardImage](https://cdn.discordapp.com/attachments/1134193112764403836/1145604844510515250/image.png)
 
-# *`CLASS`* **MemberCard:**
-.registerFonts(font)
- 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| font | array |  | Datos de la fuente de letra |
+# _`CLASS`_ **MemberCard:**
 
+.registerFonts(font)
+
+| parámetro | type  | opcional | descripción                 |
+| --------- | ----- | -------- | --------------------------- |
+| font      | array |          | Datos de la fuente de letra |
 
 `returns: MemberCard`
 
 .setUsername(username, color, font)
 
-| parámetro | type | opcional | descripción |
-|--|--|--|--|
-| username | string | | Nombre de usuario |
-| color | string | ✓ | El color del texto |
-| font | string | ✓  | La fuente de letra |
-
+| parámetro | type   | opcional | descripción        |
+| --------- | ------ | -------- | ------------------ |
+| username  | string |          | Nombre de usuario  |
+| color     | string | ✓        | El color del texto |
+| font      | string | ✓        | La fuente de letra |
 
 `returns: MemberCard`
 
 .setTitle(title, color, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| title | string | | Título de la tarjeta |
-| color | string | ✓ | El color del texto |
-| font | string | ✓  | La fuente de letra |
-
+| parámetro | type   | opcional | descripción          |
+| --------- | ------ | -------- | -------------------- |
+| title     | string |          | Título de la tarjeta |
+| color     | string | ✓        | El color del texto   |
+| font      | string | ✓        | La fuente de letra   |
 
 `returns: MemberCard`
 
 .setDescription(description, color, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| description | string |  | Descripción de la tarjeta |
-| color | string | ✓ | El color del texto |
-| font | string | ✓  | La fuente de letra |
-
+| parámetro   | type   | opcional | descripción               |
+| ----------- | ------ | -------- | ------------------------- |
+| description | string |          | Descripción de la tarjeta |
+| color       | string | ✓        | El color del texto        |
+| font        | string | ✓        | La fuente de letra        |
 
 `returns: MemberCard`
 
 .setMemberCount(memberCount, color, font)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| memberCount | string |  | El contador de miembros |
-| color | string | ✓ | El color del texto |
-| font | string | ✓  | La fuente de letra |
-
+| parámetro   | type   | opcional | descripción             |
+| ----------- | ------ | -------- | ----------------------- |
+| memberCount | string |          | El contador de miembros |
+| color       | string | ✓        | El color del texto      |
+| font        | string | ✓        | La fuente de letra      |
 
 `returns: MemberCard`
 
 .setBackground(background, blur, radius)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| background | string |  | URL de la imágen de fondo |
-| blur | number | ✓ | El difuminado del fondo |
-| radius | string | ✓  | La intensidad del borde de la tarjeta |
-
+| parámetro  | type   | opcional | descripción                           |
+| ---------- | ------ | -------- | ------------------------------------- |
+| background | string |          | URL de la imágen de fondo             |
+| blur       | number | ✓        | El difuminado del fondo               |
+| radius     | string | ✓        | La intensidad del borde de la tarjeta |
 
 `returns: MemberCard`
 
 .setAvatar(avatar, color)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| avatar | string |  | URL del avatar del usuario |
-| color | string | ✓ | Color del aro del usuario |
-
+| parámetro | type   | opcional | descripción                |
+| --------- | ------ | -------- | -------------------------- |
+| avatar    | string |          | URL del avatar del usuario |
+| color     | string | ✓        | Color del aro del usuario  |
 
 `returns: MemberCard`
 
 .setBox(box, color)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| box | boolean |  | Una caja de fondo |
-| color | string | ✓ | Color de la caja |
-
+| parámetro | type    | opcional | descripción       |
+| --------- | ------- | -------- | ----------------- |
+| box       | boolean |          | Una caja de fondo |
+| color     | string  | ✓        | Color de la caja  |
 
 `returns: MemberCard`
 
 .render()
 
-
 `returns: Promise<Buffer>`
 
 ![MemberCardImage](https://cdn.discordapp.com/attachments/1134193112764403836/1145605307146448947/image.png)
 
+# _`CLASS`_ **Ranking:**
 
-# *`CLASS`* **Ranking:**
 .registerFonts(font)
- 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| font | array |   | Datos de la fuente de letra |
 
+| parámetro | type  | opcional | descripción                 |
+| --------- | ----- | -------- | --------------------------- |
+| font      | array |          | Datos de la fuente de letra |
 
 `returns: Ranking`
 
 .setColors(colors)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| colors | RankingData#colors |   | Colores de los textos |
-
+| parámetro | type               | opcional | descripción           |
+| --------- | ------------------ | -------- | --------------------- |
+| colors    | RankingData#colors |          | Colores de los textos |
 
 `returns: Ranking`
 
-
 .setFonts(fonts)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| fonts | RankingData#fonts |   | Fuentes de letra de los textos |
-
+| parámetro | type              | opcional | descripción                    |
+| --------- | ----------------- | -------- | ------------------------------ |
+| fonts     | RankingData#fonts |          | Fuentes de letra de los textos |
 
 `returns: Ranking`
 
 .setUsersData(usersData)
 
-| parámetro | type | opcional | descripción|
-|--|--|--|--|
-| usersData | RankingData#usersData |   | Datos de los usuarios |
-
+| parámetro | type                  | opcional | descripción           |
+| --------- | --------------------- | -------- | --------------------- |
+| usersData | RankingData#usersData |          | Datos de los usuarios |
 
 `returns: Ranking`
 
 .render()
 
-
 `returns: Promise<Buffer>`
 
 ![RankingImage](https://media.discordapp.net/attachments/950886048198705222/1002390232546672770/Image.png?width=605&height=663)
 
-# *`TYPEDEF`* **CardMemberData**
+# _`TYPEDEF`_ **CardMemberData**
 
 ```ts
 {
@@ -291,7 +277,8 @@ npm i hennus-card
 }
 ```
 
-# *`TYPEDEF`* **CardLevelData**
+# _`TYPEDEF`_ **CardLevelData**
+
 ```ts
 {
  username?: string,
@@ -323,7 +310,8 @@ npm i hennus-card
 }
 ```
 
-# *`TYPEDEF`* **RankingData**
+# _`TYPEDEF`_ **RankingData**
+
 ```ts
 {
  colors?: {
