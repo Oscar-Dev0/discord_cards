@@ -64,25 +64,23 @@ export class Ranking {
    * @param  [data]? Recomiendo hacerlo con los métodos.
    */
   constructor(data?: RankingData) {
-    this.colors = data?.colors ||
+    this.colors = data?.colors || {
+      box: "#212121",
+      username: "#ffffff",
+      xp: "#ffffff",
+      level: "#ffffff",
+      firstRank: "#f7c716",
+      secondRank: "#9e9e9e",
+      thirdRank: "#94610f",
+    };
+    this.fonts = data?.fonts || {
+      username: "Nirmala UI",
+      xp: "Fredoka Bold",
+      level: "Fredoka Bold",
+      ranks: "Fredoka Bold",
+    };
+    this.usersData = data?.usersData || [
       {
-        box: "#212121",
-        username: "#ffffff",
-        xp: "#ffffff",
-        level: "#ffffff",
-        firstRank: "#f7c716",
-        secondRank: "#9e9e9e",
-        thirdRank: "#94610f",
-      };
-    this.fonts = data?.fonts ||
-      {
-        username: "Nirmala UI",
-        xp: "Fredoka Bold",
-        level: "Fredoka Bold",
-        ranks: "Fredoka Bold",
-      };
-    this.usersData = data?.usersData ||
-      [{
         top: 1,
         avatar:
           "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg",
@@ -90,7 +88,8 @@ export class Ranking {
         xp: 100,
         max_xp: 110,
         level: 1,
-      }, {
+      },
+      {
         top: 2,
         avatar:
           "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg",
@@ -98,7 +97,8 @@ export class Ranking {
         xp: 90,
         max_xp: 110,
         level: 1,
-      }, {
+      },
+      {
         top: 3,
         avatar:
           "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg",
@@ -106,7 +106,8 @@ export class Ranking {
         xp: 80,
         max_xp: 110,
         level: 1,
-      }];
+      },
+    ];
   }
 
   /**
@@ -126,24 +127,25 @@ export class Ranking {
     return this;
   }
 
-  public setColors(
-    colors: {
-      box: string;
-      username: string;
-      xp: string;
-      level: string;
-      firstRank: string;
-      secondRank: string;
-      thirdRank: string;
-    },
-  ): this {
+  public setColors(colors: {
+    box: string;
+    username: string;
+    xp: string;
+    level: string;
+    firstRank: string;
+    secondRank: string;
+    thirdRank: string;
+  }): this {
     this.colors = colors;
     return this;
   }
 
-  public setFonts(
-    fonts: { username: string; xp: string; level: string; ranks: string },
-  ): this {
+  public setFonts(fonts: {
+    username: string;
+    xp: string;
+    level: string;
+    ranks: string;
+  }): this {
     this.fonts = fonts;
     return this;
   }
@@ -212,9 +214,9 @@ export class Ranking {
         ctx.font = `20px "${this.fonts.xp}"`;
         ctx.textAlign = "right";
         ctx.fillText(
-          `XP: ${abbreviateNumber(this.usersData[i].xp)} / ${
-            abbreviateNumber(this.usersData[i].max_xp)
-          }`,
+          `XP: ${abbreviateNumber(this.usersData[i].xp)} / ${abbreviateNumber(
+            this.usersData[i].max_xp,
+          )}`,
           560,
           XP_Y,
           200,

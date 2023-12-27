@@ -408,9 +408,7 @@ export class Level {
     ctx.fillStyle = this.colors.level;
     ctx.textAlign = "left";
     ctx.fillText(
-      levelText
-        .replace(/{level}/g, String(this.level))
-        .toUpperCase(),
+      levelText.replace(/{level}/g, String(this.level)).toUpperCase(),
       270,
       230,
       385,
@@ -419,13 +417,7 @@ export class Level {
     ctx.font = `40px "${this.fonts.rankFont}"`;
     ctx.fillStyle = this.colors.rank;
     ctx.textAlign = "right";
-    ctx.fillText(
-      rankText
-        .replace(/{rank}/g, String(this.rank)),
-      965,
-      65,
-      570,
-    );
+    ctx.fillText(rankText.replace(/{rank}/g, String(this.rank)), 965, 65, 570);
 
     ctx.font = `35px "${this.fonts.xpFont}"`;
     ctx.fillStyle = this.colors.xp;

@@ -6,8 +6,10 @@ export function abbreviateNumber(value: number): string {
     let shortValue: number | string = "";
     for (let precision = 2; precision >= 1; precision--) {
       shortValue = parseFloat(
-        (suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value)
-          .toPrecision(precision),
+        (suffixNum != 0
+          ? value / Math.pow(1000, suffixNum)
+          : value
+        ).toPrecision(precision),
       );
       const dotLessShortValue: string = (shortValue + "").replace(
         /[^a-zA-Z 0-9]+/g,

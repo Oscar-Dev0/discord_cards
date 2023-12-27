@@ -4,10 +4,7 @@
     "module": "CommonJS",
     "target": "ES2020",
     "strict": true,
-    "lib": [
-      "ESNext",
-      "WebWorker"
-    ],
+    "lib": ["ESNext", "WebWorker"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "preserveConstEnums": true,
@@ -19,13 +16,6 @@
     /* Typing */
     "noImplicitAny": true
   },
-  "exclude": [
-    "node_modules",
-    "app/**",
-    "package.json",
-    "typescript/**"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ]
+  "exclude": ["node_modules", "app/**", "package.json", "typescript/**"],
+  "include": ["src/**/*.ts"]
 }

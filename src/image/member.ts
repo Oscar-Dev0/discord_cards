@@ -57,9 +57,11 @@ export class MemberCard {
       memberCount: "#ffffff",
     };
 
-    this.avatar = data?.avatar ||
+    this.avatar =
+      data?.avatar ||
       "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg";
-    this.background = data?.background ||
+    this.background =
+      data?.background ||
       "https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg";
 
     this.box = data?.box ?? true;

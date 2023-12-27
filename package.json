@@ -37,9 +37,9 @@
     "node": ">=18"
   },
   "publishConfig": {
-  "access": "public",
-  "registry": "https://registry.npmjs.org/"
-},
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "@types/node": "latest",
     "tsup": "latest",
