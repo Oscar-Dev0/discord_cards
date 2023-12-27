@@ -24,6 +24,9 @@ jobs:
       - run: npm install
       - run: npx prettier --write .
 
-      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.0.0
+
+
 
       - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc
