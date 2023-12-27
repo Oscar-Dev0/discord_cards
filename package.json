@@ -43,6 +43,7 @@
   "devDependencies": {
     "@types/node": "latest",
     "tsup": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "prettier": "latest"
   }
 }
