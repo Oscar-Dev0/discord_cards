@@ -6,7 +6,7 @@
   "types": "app/index.d.ts",
   "scripts": {
     "test": "node test",
-    "prepare": "tsup",
+    "prepare": "npm i && tsup",
     "build#Npm": "tsup && yarn publish --access public"
   },
   "repository": {
@@ -24,7 +24,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "canvas": "latest"
+    "canvas": "^2.11.2"
   },
   "keywords": [
     "canvas",
@@ -34,16 +34,16 @@
   ],
   "private": false,
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "tsup": "latest",
-    "typescript": "latest",
-    "prettier": "latest"
+    "@types/node": "^20",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "prettier": "^3.3.3"
   }
 }
