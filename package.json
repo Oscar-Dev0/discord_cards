@@ -6,7 +6,7 @@
   "types": "app/index.d.ts",
 "scripts": {
   "test": "node test",
-  "prepare": "npm install && tsup",
+  "prepare": "tsup",
   "build#Npm": "tsup && yarn publish --access public"
 },
   "repository": {
