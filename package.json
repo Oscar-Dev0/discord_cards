@@ -4,11 +4,11 @@
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
   "types": "app/index.d.ts",
-  "scripts": {
-    "test": "node test",
-    "prepare": "npm i && tsup",
-    "build#Npm": "tsup && yarn publish --access public"
-  },
+"scripts": {
+  "test": "node test",
+  "prepare": "npm install && tsup",
+  "build#Npm": "tsup && yarn publish --access public"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Oscar-Dev0/hennus-Card.git"
