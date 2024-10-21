@@ -1,5 +1,5 @@
 {
-  "name": "hennus-card",
+  "name": "@hennus/cards",
   "version": "0.0.1",
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
