@@ -1,5 +1,5 @@
 {
-  "name": "@hennus/cards",
+  "name": "@oscardev/cards",
   "version": "0.0.1",
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
@@ -11,15 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Oscar-Dev0/hennus-Card.git"
+    "url": "git+https://github.com/Oscar-Dev0/discord_cards.git"
   },
-  "repository.url": "git+https://github.com/Oscar-Dev0/hennus-Card.git",
+  "repository.url": "git+https://github.com/Oscar-Dev0/discord_cards.git",
   "author": "Alfr3XD",
   "contributors": [
     {
       "name": "Oscar-Dev",
-      "url": "https://github.com/OscarDev-JS",
-      "author": true
+      "url": "https://github.com/OscarDev-JS"
     }
   ],
   "license": "MIT",
