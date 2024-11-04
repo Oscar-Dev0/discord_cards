@@ -203,14 +203,14 @@ export class MemberCard {
     fillRoundRect(ctx, 0, 0, canvas.width, canvas.height, this.radius);
     ctx.clip();
     try {
-      ctx.drawImage(Fondo, -10, -50, 1280, 720);
+      ctx.drawImage(Fondo, 0, 0, 1260, 620);
     } catch {
       ctx.drawImage(
         await loadImage(
           "https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg",
         ),
-        -10,
-        -50,
+        0,
+        0,
         1280,
         720,
       );

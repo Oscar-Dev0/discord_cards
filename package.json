@@ -1,6 +1,6 @@
 {
   "name": "@oscardev/cards",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
   "types": "app/index.d.ts",
