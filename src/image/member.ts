@@ -217,7 +217,7 @@ export class MemberCard {
     }
     ctx.restore();
 
-    if(this.memberCount){
+    if (this.memberCount) {
       if (this.box) {
         ctx.save();
         ctx.fillStyle = this.colors.box;
@@ -242,7 +242,6 @@ export class MemberCard {
         ctx.restore();
       }
     }
-   
 
     ctx.save();
     ctx.strokeStyle = this.colors.stroke;
