@@ -18,7 +18,7 @@ export class MemberCard {
   private username: string;
   private title: string;
   private description: string;
-  private memberCount: string;
+  private memberCount?: string;
   private colors: {
     title: string;
     description: string;
@@ -46,7 +46,7 @@ export class MemberCard {
     this.username = data?.username || "Unknown#0000";
     this.title = data?.title || "WELCOME";
     this.description = data?.description || "A new user";
-    this.memberCount = `#${data?.memberCount || 150}`;
+    this.memberCount = undefined;
 
     this.colors = data?.colors || {
       title: "#ffffff",
@@ -217,29 +217,32 @@ export class MemberCard {
     }
     ctx.restore();
 
-    if (this.box) {
-      ctx.save();
-      ctx.fillStyle = this.colors.box;
-      ctx.globalAlpha = 0.5;
-      fillRoundRect(ctx, 63, 50, 1134, 520, 10, true);
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = this.colors.memberCount;
-      ctx.font = `45px "${this.fonts.memberCountFont}"`;
-      ctx.textAlign = "right";
-      ctx.fillText(this.memberCount, 1150, 120, 430);
-      ctx.restore();
-    } else {
-      ctx.save();
-      ctx.shadowColor = "#0a0a0a";
-      ctx.shadowOffsetY = 8;
-      ctx.shadowOffsetX = -6;
-      ctx.shadowBlur = 8;
-      ctx.fillStyle = this.colors.memberCount;
-      ctx.font = `45px "${this.fonts.memberCountFont}"`;
-      ctx.textAlign = "right";
-      ctx.fillText(this.memberCount, 1200, 580, 430);
-      ctx.restore();
+    if(this.memberCount){
+      if (this.box) {
+        ctx.save();
+        ctx.fillStyle = this.colors.box;
+        ctx.globalAlpha = 0.5;
+        fillRoundRect(ctx, 63, 50, 1134, 520, 10, true);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = this.colors.memberCount;
+        ctx.font = `45px "${this.fonts.memberCountFont}"`;
+        ctx.textAlign = "right";
+        ctx.fillText(this.memberCount, 1150, 120, 430);
+        ctx.restore();
+      } else {
+        ctx.save();
+        ctx.shadowColor = "#0a0a0a";
+        ctx.shadowOffsetY = 8;
+        ctx.shadowOffsetX = -6;
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = this.colors.memberCount;
+        ctx.font = `45px "${this.fonts.memberCountFont}"`;
+        ctx.textAlign = "right";
+        ctx.fillText(this.memberCount, 1200, 580, 430);
+        ctx.restore();
+      }
     }
+   
 
     ctx.save();
     ctx.strokeStyle = this.colors.stroke;
