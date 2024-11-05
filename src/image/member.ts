@@ -237,7 +237,7 @@ export class MemberCard {
       ctx.fillStyle = this.colors.memberCount;
       ctx.font = `45px "${this.fonts.memberCountFont}"`;
       ctx.textAlign = "right";
-      ctx.fillText(this.memberCount, 1200, 80, 430);
+      ctx.fillText(this.memberCount, 1200, 580, 430);
       ctx.restore();
     }
 
