@@ -59,10 +59,10 @@ export class MemberCard {
 
     this.avatar =
       data?.avatar ||
-      "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg";
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c394d23-5c2d-4ef3-9671-8ad7e1080cfd/d4j1o7o-2b601abb-cee6-416f-9495-041d2c6f5d09.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJjMzk0ZDIzLTVjMmQtNGVmMy05NjcxLThhZDdlMTA4MGNmZFwvZDRqMW83by0yYjYwMWFiYi1jZWU2LTQxNmYtOTQ5NS0wNDFkMmM2ZjVkMDkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.O4tYIlHpG2PADQBScRrx54sUVbksH-nqd6AUlSN3D50";
     this.background =
       data?.background ||
-      "https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg";
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c394d23-5c2d-4ef3-9671-8ad7e1080cfd/d4j1o7o-2b601abb-cee6-416f-9495-041d2c6f5d09.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJjMzk0ZDIzLTVjMmQtNGVmMy05NjcxLThhZDdlMTA4MGNmZFwvZDRqMW83by0yYjYwMWFiYi1jZWU2LTQxNmYtOTQ5NS0wNDFkMmM2ZjVkMDkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.O4tYIlHpG2PADQBScRrx54sUVbksH-nqd6AUlSN3D50";
 
     this.box = data?.box ?? true;
     this.radius = data?.radius || 15;
@@ -199,15 +199,15 @@ export class MemberCard {
     const ctx = canvas.getContext("2d");
 
     ctx.save();
-    const Fondo = await loadImage(this.background);
     fillRoundRect(ctx, 0, 0, canvas.width, canvas.height, this.radius);
     ctx.clip();
     try {
+      const Fondo = await loadImage(this.background);
       ctx.drawImage(Fondo, 0, 0, 1260, 620);
     } catch {
       ctx.drawImage(
         await loadImage(
-          "https://img.freepik.com/foto-gratis/fondo-azul-degradado-lujo-abstracto-azul-oscuro-liso-banner-estudio-vineta-negra_1258-52379.jpg",
+          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c394d23-5c2d-4ef3-9671-8ad7e1080cfd/d4j1o7o-2b601abb-cee6-416f-9495-041d2c6f5d09.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJjMzk0ZDIzLTVjMmQtNGVmMy05NjcxLThhZDdlMTA4MGNmZFwvZDRqMW83by0yYjYwMWFiYi1jZWU2LTQxNmYtOTQ5NS0wNDFkMmM2ZjVkMDkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.O4tYIlHpG2PADQBScRrx54sUVbksH-nqd6AUlSN3D50",
         ),
         0,
         0,
@@ -258,7 +258,7 @@ export class MemberCard {
     } catch {
       ctx.drawImage(
         await loadImage(
-          "https://i.pinimg.com/736x/c6/a8/5f/c6a85f7dbcbf367d5dc1baa2aaa19a73.jpg",
+          "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c394d23-5c2d-4ef3-9671-8ad7e1080cfd/d4j1o7o-2b601abb-cee6-416f-9495-041d2c6f5d09.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJjMzk0ZDIzLTVjMmQtNGVmMy05NjcxLThhZDdlMTA4MGNmZFwvZDRqMW83by0yYjYwMWFiYi1jZWU2LTQxNmYtOTQ5NS0wNDFkMmM2ZjVkMDkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.O4tYIlHpG2PADQBScRrx54sUVbksH-nqd6AUlSN3D50",
         ),
         520,
         110,
