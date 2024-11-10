@@ -2,6 +2,7 @@ import axios from "axios";
 import { loadImage } from "canvas";
 
 async function imageUrlToBufer(url: string) {
+  if(/^data:image\/png;base64,([A-Za-z0-9+/=]+)$/.test(url)) url
   if (!/^\s*https?:\/\//.test(url)) return undefined;
   try {
     // Obtén la imagen desde la URL
@@ -18,7 +19,6 @@ async function imageUrlToBufer(url: string) {
 
     return base64Image;
   } catch (error) {
-    console.error("Error al obtener la imagen:", error);
     return undefined;
   }
 }
