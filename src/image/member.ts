@@ -58,12 +58,8 @@ export class MemberCard {
       memberCount: "#ffffff",
     };
 
-    this.avatar =
-      data?.avatar ||
-      "https://i.imgur.com/eYlmEGN.png";
-    this.background =
-      data?.background ||
-      "https://i.imgur.com/eYlmEGN.png";
+    this.avatar = data?.avatar || "https://i.imgur.com/eYlmEGN.png";
+    this.background = data?.background || "https://i.imgur.com/eYlmEGN.png";
 
     this.box = data?.box ?? true;
     this.radius = data?.radius || 15;
@@ -207,9 +203,7 @@ export class MemberCard {
       ctx.drawImage(Fondo, 0, 0, 1260, 620);
     } catch {
       ctx.drawImage(
-        await getImagen(
-          "https://i.imgur.com/eYlmEGN.png",
-        ),
+        await getImagen("https://i.imgur.com/eYlmEGN.png"),
         0,
         0,
         1280,
@@ -257,9 +251,7 @@ export class MemberCard {
       ctx.drawImage(Avatar, 520, 110, 220, 220);
     } catch {
       ctx.drawImage(
-        await getImagen(
-          "https://i.imgur.com/eYlmEGN.png",
-        ),
+        await getImagen("https://i.imgur.com/eYlmEGN.png"),
         520,
         110,
         220,
