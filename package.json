@@ -1,6 +1,6 @@
 {
   "name": "@oscardev/cards",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Una librería de tarjetas personalizadas para bots de discord con canvas",
   "main": "app/index.js",
   "types": "app/index.d.ts",
@@ -23,11 +23,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.9.0",
-    "canvas": "3.1.0"
+    "axios": "1.12.2",
+    "fast-glob": "3.3.3",
+    "skia-canvas": "3.0.8"
   },
   "keywords": [
-    "canvas",
+    "skia-canvas",
     "discord",
     "cards",
     "bot discord"
@@ -42,8 +43,8 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "prettier": "3.5.3",
+    "prettier": "3.6.2",
     "tsup": "8.5.0",
-    "typescript": "5.8.3"
+    "typescript": "5.9.3"
   }
 }

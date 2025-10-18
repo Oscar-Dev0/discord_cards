@@ -1,6 +1,7 @@
-import { createCanvas, loadImage, registerFont } from "canvas";
+import { Canvas, loadImage } from "skia-canvas";
 import { abbreviateNumber, fillRoundRect } from "../utils";
 import { join } from "path";
+import { registerFont } from "../utils/functions";
 
 interface ColorsData {
   bar?: string | { hex: string; position: number }[];
@@ -110,13 +111,12 @@ export class Level {
    */
   private registerFonts(
     font?: {
-      path: string;
-      options: { family: string; weight?: string; style?: string };
+     name: string, path: string
     }[],
   ): this {
     if (font && font?.length > 0) {
       font.forEach((f) => {
-        registerFont(f.path, f.options);
+        registerFont(f.name, f.path);
       });
     }
     return this;
@@ -311,7 +311,7 @@ export class Level {
 
   /** Construye la tarjeta de niveles */
   public async render(): Promise<Buffer> {
-    const canvas = createCanvas(1020, 320);
+    const canvas = new Canvas(1020, 320);
     const ctx = canvas.getContext("2d");
 
     ctx.save();
@@ -431,6 +431,6 @@ export class Level {
       400,
     );
 
-    return canvas.toBuffer();
+    return canvas.toBuffer("png");
   }
 }

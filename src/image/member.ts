@@ -1,4 +1,4 @@
-import { createCanvas } from "canvas";
+import { Canvas } from "skia-canvas";
 import { circleImage, fillRoundRect } from "../utils";
 import getImagen from "../utils/getimagen";
 
@@ -192,7 +192,7 @@ export class MemberCard {
 
   /** Construye la tarjeta de niveles */
   async render(): Promise<Buffer> {
-    const canvas = createCanvas(1260, 620);
+    const canvas = new Canvas(1260, 620);
     const ctx = canvas.getContext("2d");
 
     ctx.save();
@@ -280,7 +280,7 @@ export class MemberCard {
     ctx.textAlign = "center";
     ctx.fillText(this.description, 642, 540, 1050);
 
-    return canvas.toBuffer();
+    return canvas.toBuffer("png");
   }
 }
 

@@ -1,4 +1,4 @@
-import { CanvasRenderingContext2D } from "canvas";
+import { CanvasRenderingContext2D } from "skia-canvas";
 
 export const fillRoundRect = (
   ctx: CanvasRenderingContext2D,

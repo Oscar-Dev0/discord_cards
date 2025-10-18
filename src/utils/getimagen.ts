@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loadImage } from "canvas";
+import { loadImage } from "skia-canvas";
 
 async function imageUrlToBufer(url: string) {
   if (/^data:image\/png;base64,([A-Za-z0-9+/=]+)$/.test(url)) url;

@@ -1,10 +1,10 @@
 import {
   CanvasRenderingContext2D,
-  createCanvas,
+  Canvas,
   loadImage,
-  registerFont,
-} from "canvas";
+} from "skia-canvas";
 import { abbreviateNumber, fillRoundRect } from "../utils";
+import { registerFont } from "../utils/functions";
 
 interface RankingData {
   fonts?: { username: string; xp: string; level: string; ranks: string };
@@ -115,13 +115,12 @@ export class Ranking {
    */
   public registerFonts(
     font?: {
-      path: string;
-      options: { family: string; weight?: string; style?: string };
+      name: string, path: string
     }[],
   ): this {
     if (font && font?.length > 0) {
       font.forEach((f) => {
-        registerFont(f.path, f.options);
+        registerFont(f.name, f.path);
       });
     }
     return this;
@@ -167,7 +166,7 @@ export class Ranking {
   public async render(): Promise<Buffer> {
     var font = "fredoka";
 
-    const canvas = createCanvas(680, 745);
+    const canvas = new Canvas(680, 745);
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     if (this.usersData) {
@@ -258,6 +257,6 @@ export class Ranking {
       ctx.fillText("NO ENCONTRADO", 340, 370, 500);
     }
 
-    return canvas.toBuffer();
+    return canvas.toBuffer("png");
   }
 }
