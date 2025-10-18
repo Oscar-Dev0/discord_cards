@@ -1,7 +1,5 @@
 import { registerFont } from "./utils/functions";
 
-
-
 export * from "./image";
 
 
