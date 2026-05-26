@@ -48,6 +48,9 @@
     "typescript": "5.9.3"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["skia-canvas"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "skia-canvas"
+    ]
   }
 }
